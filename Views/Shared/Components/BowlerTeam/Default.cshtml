@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Teams>
+
+@*Add the team name into the header of the page when selected*@
+
+<h1>Team Contact List: @ViewBag.SelectedTeamName</h1>
+<br /><br />
+<a class="btn btn-block btn-secondary" asp-action="Index" asp-controller="Home" asp-route-teamid="">Home</a>
+<br />
+
+@*create the buttons and use an if statement to make sure the team selected is hightlighted.*@
+
+@foreach(var x in Model)
+{ 
+    <a class="btn @(x.TeamName == ViewBag.SelectedTeamName ? "btn-primary" : "btn-secondary") mya" asp-action="Index" asp-controller="Home" asp-route-teamid="@x.TeamId" asp-route-teamname="@x.TeamName">@x.TeamName</a>
+    
+}
+
+
